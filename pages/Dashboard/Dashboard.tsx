@@ -8,6 +8,7 @@ import { FlashcardCard } from '../../components/FlashcardCard/FlashcardCard';
 import { FlashcardFormModal } from '../../components/FlashcardForm/FlashcardFormModal';
 import { getFlashcards, createFlashcard, updateFlashcard, deleteFlashcard } from '../../services/supabase';
 import { Flashcard } from '../../types';
+import { useDebounce } from '../../hooks/useDebounce';
 
 interface DashboardProps {
   onStudySessionStart: (cards: Flashcard[]) => void;
@@ -22,6 +23,7 @@ export function Dashboard({ onStudySessionStart, onAiTutorStart }: DashboardProp
   // Search & Filter state
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -105,15 +107,17 @@ export function Dashboard({ onStudySessionStart, onAiTutorStart }: DashboardProp
     }
   };
 
-  // Categories derivation
-  const categories = Array.from(new Set(cards.map((c) => c.category.trim()))).filter(Boolean);
+  // Categories derivation matching T3.2 predefined list plus custom database cards
+  const defaultCategories = ['AI', 'Programming', 'Mathematics', 'Science'];
+  const dynamicCategories = Array.from(new Set(cards.map((c) => c.category.trim()))).filter(Boolean);
+  const categories = Array.from(new Set([...defaultCategories, ...dynamicCategories]));
 
   // Search & filter matching
   const filteredCards = cards.filter((card) => {
     const matchesCategory =
       selectedCategory === 'All' ||
       card.category.toLowerCase().trim() === selectedCategory.toLowerCase().trim();
-    const query = searchQuery.toLowerCase().trim();
+    const query = debouncedSearchQuery.toLowerCase().trim();
     const matchesSearch =
       query === '' ||
       card.title.toLowerCase().includes(query) ||
