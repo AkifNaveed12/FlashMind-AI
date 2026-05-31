@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Header } from '../components/Header/Header';
 import { Dashboard } from '../pages/Dashboard/Dashboard';
 import { StudyMode } from '../pages/StudyMode/StudyMode';
+import { AiTutorDrawer } from '../components/AiTutorDrawer/AiTutorDrawer';
 import { Flashcard } from '../types';
 
 function App() {
   const [currentTab, setCurrentTab] = useState<'dashboard' | 'study'>('dashboard');
   const [selectedCards, setSelectedCards] = useState<Flashcard[]>([]);
+  const [aiTutorCard, setAiTutorCard] = useState<Flashcard | null>(null);
 
   const handleStudySessionStart = (cards: Flashcard[]) => {
     setSelectedCards(cards);
@@ -14,8 +16,7 @@ function App() {
   };
 
   const handleAiTutorStart = (card: Flashcard) => {
-    // Open AI Tutor drawer (can display an alert or a nice panel)
-    alert(`AI Tutor requested for card: "${card.title}"\n(AI Tutor chat drawer will be fully unlocked in Phase 5)`);
+    setAiTutorCard(card);
   };
 
   return (
@@ -38,6 +39,9 @@ function App() {
           />
         )}
       </div>
+
+      {/* AI Tutor Drawer Overlay */}
+      <AiTutorDrawer card={aiTutorCard} onClose={() => setAiTutorCard(null)} />
 
       {/* Footer */}
       <footer className="py-6 border-t border-slate-200 text-center text-sm text-slate-500 bg-white">
