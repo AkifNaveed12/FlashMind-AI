@@ -124,5 +124,25 @@ Implemented an interactive 3D study card viewport utilizing CSS 3D perspectives.
 - Declared custom 3D hardware-accelerated CSS utilities inside `index.css` to handle smooth perspective flips.
 - Added key event defaults suppression to block page vertical shifting when navigating cards via space or arrow keys.
 
+## [2026-06-01T01:25:00+05:00] Phase 6 - AI Tutor Integration Completed
+
+### Task Completed
+Integrated the conversational AI Study Tutor slide-over chat drawer. Connected student messages to the Groq API utilizing a topic-aware system prompt to simplify complex concepts. Built speech accessibility features, including Text-to-Speech (TTS) reading synthesis and Speech-to-Text (STT) mic capture.
+
+### Files Modified / Created
+- **Created**:
+  - `components/AiTutorDrawer/AiTutorDrawer.tsx` (Slide-out virtual tutor overlay drawer)
+- **Modified**:
+  - `src/App.tsx` (Declared active card state and mounted AiTutorDrawer overlay)
+  - `docs/context.md` (Recorded Phase 6 completion details)
+
+### Bugs Fixed
+- None.
+
+### Decisions Made
+- Cancel active audio speech tracks automatically upon drawer unmounts or card changes to prevent overlap.
+- Provided local speech recognition fallbacks checking window support objects, handling errors, and displaying inline warnings if microphone permissions are denied.
+
+
 
 
