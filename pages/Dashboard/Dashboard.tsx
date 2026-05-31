@@ -13,9 +13,10 @@ import { useDebounce } from '../../hooks/useDebounce';
 interface DashboardProps {
   onStudySessionStart: (cards: Flashcard[]) => void;
   onAiTutorStart: (card: Flashcard) => void;
+  onVoiceClick: (card: Flashcard) => void;
 }
 
-export function Dashboard({ onStudySessionStart, onAiTutorStart }: DashboardProps) {
+export function Dashboard({ onStudySessionStart, onAiTutorStart, onVoiceClick }: DashboardProps) {
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [dbError, setDbError] = useState<string | null>(null);
@@ -230,6 +231,7 @@ export function Dashboard({ onStudySessionStart, onAiTutorStart }: DashboardProp
               onDeleteClick={handleDeleteClick}
               onStudyClick={(c) => onStudySessionStart([c])}
               onAiTutorClick={onAiTutorStart}
+              onVoiceClick={onVoiceClick}
             />
           ))}
         </section>
