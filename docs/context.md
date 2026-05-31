@@ -85,3 +85,23 @@ Implemented the user-facing Dashboard layout with rich, premium UI elements and 
 - Added client-side duplicate title validation on card edit/save checking other loaded flashcard titles case-insensitively to prevent database duplication.
 - Extracted dynamic unique category tags from database cards to render category filtering pills automatically.
 
+## [2026-06-01T01:05:00+05:00] Phase 4 - Search & Filtering Completed
+
+### Task Completed
+Implemented global search debouncing and default/dynamic category filter lists on the central Dashboard. Integrated search queries matching titles, questions, and categories with category pill selection filters to handle combined constraint parameters.
+
+### Files Modified / Created
+- **Created**:
+  - `hooks/useDebounce.ts` (Custom state-delaying hook)
+- **Modified**:
+  - `pages/Dashboard/Dashboard.tsx` (Applied debounced queries, default filter tags, and combination filter checks)
+  - `docs/context.md` (Added context updates)
+
+### Bugs Fixed
+- None.
+
+### Decisions Made
+- Debounced search query states by 300ms to prevent heavy component re-renders while typing.
+- Combined predefined standard categories ('AI', 'Programming', 'Mathematics', 'Science') with database-derived tags to deliver an immediate interactive filter row.
+
+
