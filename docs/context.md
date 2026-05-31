@@ -143,6 +143,27 @@ Integrated the conversational AI Study Tutor slide-over chat drawer. Connected s
 - Cancel active audio speech tracks automatically upon drawer unmounts or card changes to prevent overlap.
 - Provided local speech recognition fallbacks checking window support objects, handling errors, and displaying inline warnings if microphone permissions are denied.
 
+## [2026-06-01T01:45:00+05:00] Phase 7 - Voice Explanation Completed
+
+### Task Completed
+Integrated the floating Voice Guide widget providing spoken flashcard explanations. Connected voice playback with the Groq API to generate simple spoken summaries. Handled SpeechSynthesis play, pause, and stop controls, displaying bouncing equalizer animation rows when speaking.
+
+### Files Modified / Created
+- **Created**:
+  - `components/VoiceExplanation/VoicePlayer.tsx` (Floating audio explanation controller card)
+- **Modified**:
+  - `pages/Dashboard/Dashboard.tsx` (Passed the onVoiceClick handlers to the card lists)
+  - `src/App.tsx` (Orchestrated active voice explanation card states and mounted the player widget)
+  - `docs/context.md` (Recorded Phase 7 completed details)
+
+### Bugs Fixed
+- Resolved typing compile error inside `VoicePlayer.tsx` where prompt declarations default typed `role` as general string types instead of valid `GroqMessage` literals by explicitly casting the prompt array as `GroqMessage[]`.
+
+### Decisions Made
+- Setup default utterance parameters slowing down synthesis playback rates to 0.95 to deliver clear explanation enunciations.
+- Cleared out active audio tracks immediately on player closures to prevent background voice outputs from persisting.
+
+
 
 
 
