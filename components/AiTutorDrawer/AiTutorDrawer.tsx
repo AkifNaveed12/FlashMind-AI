@@ -182,7 +182,7 @@ Answer the student's questions directly in relation to this card. If they ask ab
 
             <button
               onClick={onClose}
-              className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all"
+              className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 outline-none"
               title="Close drawer"
             >
               <X className="w-5 h-5" />
@@ -233,7 +233,7 @@ Answer the student's questions directly in relation to this card. If they ask ab
                     {isAssistant && (
                       <button
                         onClick={() => handleSpeak(msg.content)}
-                        className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-600 font-bold mt-1 transition-colors px-1"
+                        className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-600 font-bold mt-1 transition-colors px-1 focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 outline-none rounded"
                         title="Listen to response"
                       >
                         <Volume2 className="w-3.5 h-3.5" />
@@ -278,7 +278,7 @@ Answer the student's questions directly in relation to this card. If they ask ab
               <button
                 type="button"
                 onClick={handleMicToggle}
-                className={`p-3 rounded-xl border transition-all flex items-center justify-center flex-shrink-0 ${
+                className={`p-3 rounded-xl border transition-all flex items-center justify-center flex-shrink-0 focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 outline-none ${
                   isListening
                     ? 'border-red-500 bg-red-50 text-red-600 animate-pulse'
                     : 'border-slate-200 hover:border-indigo-400 text-slate-500 hover:bg-slate-50'
@@ -294,13 +294,13 @@ Answer the student's questions directly in relation to this card. If they ask ab
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="Ask Tutor to explain this card..."
                 disabled={isGenerating}
-                className="flex-1 px-4 py-3 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-indigo-600 disabled:bg-slate-50 placeholder-slate-400"
+                className="flex-1 px-4 py-3 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 disabled:bg-slate-50 placeholder-slate-400 focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 outline-none"
               />
 
               <button
                 type="submit"
                 disabled={isGenerating || !inputText.trim()}
-                className="p-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl disabled:bg-slate-100 disabled:text-slate-400 transition-all flex items-center justify-center flex-shrink-0 active:scale-95"
+                className="p-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl disabled:bg-slate-100 disabled:text-slate-400 transition-all flex items-center justify-center flex-shrink-0 active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 outline-none"
               >
                 <Send className="w-4 h-4" />
               </button>
