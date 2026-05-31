@@ -1,0 +1,23 @@
+# FlashMind AI - Project & Runtime Requirements
+
+# Runtimes
+node>=18.0.0
+npm>=9.0.0
+
+# Framework & Build
+vite>=5.2.11
+react>=18.3.1
+react-dom>=18.3.1
+typescript>=5.2.2
+
+# Persistence & AI Services
+@supabase/supabase-js>=2.43.4
+groq-api-client (RESTful fetch utility targeting Llama 3.3 70B Versatile)
+
+# CSS & Styling
+tailwindcss>=3.4.3
+postcss>=8.4.38
+autoprefixer>=10.4.19
+
+# Icons
+lucide-react>=0.395.0
