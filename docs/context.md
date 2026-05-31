@@ -104,4 +104,25 @@ Implemented global search debouncing and default/dynamic category filter lists o
 - Debounced search query states by 300ms to prevent heavy component re-renders while typing.
 - Combined predefined standard categories ('AI', 'Programming', 'Mathematics', 'Science') with database-derived tags to deliver an immediate interactive filter row.
 
+## [2026-06-01T01:15:00+05:00] Phase 5 - Study Mode Completed
+
+### Task Completed
+Implemented an interactive 3D study card viewport utilizing CSS 3D perspectives. Supported next/prev navigation, Fisher-Yates shuffle randomization, progress-bar tracking, and native keyboard accessibility triggers (`Space` to flip, arrows to navigate) with page scroll prevention.
+
+### Files Modified / Created
+- **Created**:
+  - `pages/StudyMode/StudyMode.tsx` (Immersive study screen page component)
+- **Modified**:
+  - `src/index.css` (Appended hardware-accelerated perspective and flip transform utilities)
+  - `src/App.tsx` (Swapped study placeholder shell with active StudyMode router page)
+  - `docs/context.md` (Recorded Phase 5 completion logs)
+
+### Bugs Fixed
+- None.
+
+### Decisions Made
+- Declared custom 3D hardware-accelerated CSS utilities inside `index.css` to handle smooth perspective flips.
+- Added key event defaults suppression to block page vertical shifting when navigating cards via space or arrow keys.
+
+
 
